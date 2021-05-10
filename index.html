@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="hutf-8">
+        <title>Javascript</title>
+        <style>
+            body {
+                display: flex;
+                 flex-wrap: wrap;
+
+            }
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+                cursor: pointer;
+                transition: 0.8s;
+                margin: 0 8px 8px 0;
+                text-align: center;
+                line-height: 100px;
+                color: white;
+            }
+            .win {
+                background: pink;
+                border-radius: 50%;
+                transform: rotate(360deg);
+            }
+            .lose {
+                transform: scale(0.9);
+            }
+        </style>
+
+    </head>
+    <body>
+        
+
+        <script>
+            'use script';
+
+            const num = 5;
+            const winner = Math.floor(Math.random() * num); //Math.floorで小数点以下を切り捨てる、１〜４の間でWinnerが生成される
+
+            // iが５までを生成してる段階でクリックイベントを行うーwinner(ランダム関数)も生成されるー合致するとIf文が発動
+            for(let i = 0; i < num; i++){
+                 // 省略してる↓
+                const div = document.createElement('div');
+                // <div class='box'>というものも追加
+                div.classList.add('box');
+        
+                // そのDiv要素がクリックされた時のイベントボタン
+                div.addEventListener('click', () => {
+                    if(i === winner){
+                        div.textContent = 'win';
+                        div.classList.add('win');
+                    }else {
+                        div.textContent = 'lose!';
+                        div.classList.add('lose');
+                    }
+                });
+                // ブラウザに表示させるためにBody要素の子要素として表示するためのコード
+
+                document.body.appendChild(div);
+            }
+           
+        </script>
+    </body>
+</html>
